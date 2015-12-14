@@ -1,0 +1,26 @@
+{
+  "name": "WW",
+  "version": "1.0.0",
+    "description": "WW - webpack, ES6, and react-router",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "deploy": "webpack -p"
+  },
+  "author": "Dima Verz",
+  "license": "ISC",
+  "dependencies": {
+    "reflux": "^0.3.0",
+    "history": "^1.13.0",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-router": "^1.0.0-rc4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-react": "^6.1.2",
+    "webpack": "^1.12.3"
+  }
+}
