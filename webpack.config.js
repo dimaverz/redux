@@ -9,7 +9,7 @@ module.exports = {
     inline: true,
     contentBase: './dist',
     historyApiFallback: true,
-    port: 8181
+    port: 3003
   },
   module: {
     loaders: [
