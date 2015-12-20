@@ -1,7 +1,9 @@
 import * as types from '../constants/ActionTypes'
+import axios from 'axios'
 
-export function addTodo(text) {
-  return { type: types.ADD_TODO, text }
+export function addTodo(obj) {
+  console.log('addTodo ', obj.text);
+  return { type: types.ADD_TODO, text: obj.text }
 }
 
 export function deleteTodo(id) {
@@ -37,8 +39,27 @@ function receiveData(obj, json) {
   return {
     type: types.RECEIVE_TESTDATA,
     obj,
-    posts: '',//json.data.children.map(child => child.data),
+    posts: 'yo',//json.data.children.map(child => child.data),
     receivedAt: Date.now()
+  }
+}
+
+export function addTodoServer(obj) {
+  console.log('add through server');
+  return dispatch => {
+    dispatch({
+      type: types.RUN_AJAX_LOADER,
+      obj
+    })
+    return axios.post('http://localhost/_tuts/addtask.php', obj)
+      .then(function (response) {
+        console.log('good : ', response)
+        return dispatch(addTodo(response.data))
+      })
+      .catch(function (response) {
+        console.log('error : ', response)
+        return response
+      })
   }
 }
 
@@ -46,7 +67,16 @@ export function fetchTestData(obj) {
    console.log('fetchTestData');
   return dispatch => {
     dispatch(requestData(obj))
-    return fetch(`http://localhost/_tuts/test.php`,  {
+    return axios.post('http://localhost/_tuts/test.php', obj)
+      .then(function (response) {
+        console.log('good : ', response)
+        return dispatch(receiveData(obj, response))
+      })
+      .catch(function (response) {
+        console.log('error : ', response)
+        return response
+      })
+      /*fetch(`http://localhost/_tuts/test.php`,  {
           mode: 'no-cors',
           method: 'post',
           headers: {
@@ -64,7 +94,7 @@ export function fetchTestData(obj) {
       })
       .catch(function(response){
          console.log('error : ', response);
-         return response })
+         return response })*/
   }
 }
 

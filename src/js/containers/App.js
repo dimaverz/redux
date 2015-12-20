@@ -6,13 +6,20 @@ import * as TodosActions from '../actions/todos'
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import MainSection from '../components/MainSection'
+import ObjectSearch from '../components/ObjectSearch'
 
 class App extends Component {
 
    componentDidMount(){
       const { dispatch } = this.props
       console.log('componentDidMount', this.props);
-      dispatch(TodosActions.fetchTestData({name: 'tt'}))
+      dispatch(TodosActions.fetchTestData(
+        {
+          id: 666,
+          firstName: 'Fred',
+          lastName: 'Flintstone'
+        }
+      ))
    }
 
   render() {
@@ -23,8 +30,9 @@ class App extends Component {
     return (
       <div>
         <Counter counter={this.props.counter} {...this.props.counterActions}/>
-        <Header addTodo={todosActions.addTodo} />
+        <Header addTodo={todosActions.addTodoServer} />
         <MainSection todos={todos} actions={todosActions} />
+        <ObjectSearch />
       </div>
     )
   }

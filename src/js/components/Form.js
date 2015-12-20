@@ -21,9 +21,9 @@ class Form extends Component {
       const text = e.target.value.trim()
       if (e.which === 13) {
          this.props.onSave(text)
-         // if (this.props.newTodo) {
-         //   this.setState({ text: '' })
-         // }
+         if (this.props.newTodo) {
+           this.setState({ text: '' })
+         }
          console.log('submit : ', text);
       }
    }
