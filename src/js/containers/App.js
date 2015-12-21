@@ -6,9 +6,13 @@ import * as TodosActions from '../actions/todos'
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import MainSection from '../components/MainSection'
-import ObjectSearch from '../components/ObjectSearch'
 
 class App extends Component {
+
+  constructor(props, context) {
+    super(props, context)
+    console.log('App : constructor')
+  }
 
    componentDidMount(){
       const { dispatch } = this.props
@@ -32,7 +36,6 @@ class App extends Component {
         <Counter counter={this.props.counter} {...this.props.counterActions}/>
         <Header addTodo={todosActions.addTodoServer} />
         <MainSection todos={todos} actions={todosActions} />
-        <ObjectSearch />
       </div>
     )
   }

@@ -52,6 +52,7 @@ export function addTodoServer(obj) {
       obj
     })
     return axios.post('http://localhost/_tuts/addtask.php', obj)
+    //return axios.get('http://localhost/canabi/', obj)
       .then(function (response) {
         console.log('good : ', response)
         return dispatch(addTodo(response.data))
