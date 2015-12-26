@@ -6,6 +6,8 @@ import * as TodosActions from '../actions/todos'
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import MainSection from '../components/MainSection'
+import mix from '../__l/mix'
+
 
 class App extends Component {
 
@@ -29,7 +31,7 @@ class App extends Component {
   render() {
     console.log('APP - render : ', this.state, this.props);
     const { todos, todosActions } = this.props;
-
+    mix.mix_init();
     //const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props
     return (
       <div>
