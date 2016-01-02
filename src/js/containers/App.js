@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router'
+
 import Counter from '../components/Counter'
 import * as CounterActions from '../actions/counter'
 import * as TodosActions from '../actions/todos'
@@ -35,6 +37,7 @@ class App extends Component {
     //const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props
     return (
       <div>
+         <Link      to="/w"   >/users</Link>
         <Counter counter={this.props.counter} {...this.props.counterActions}/>
         <Header addTodo={todosActions.addTodoServer} />
         <MainSection todos={todos} actions={todosActions} />
