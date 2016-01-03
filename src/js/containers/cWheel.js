@@ -9,7 +9,7 @@ class Wheel extends Component {
 
   constructor(props, context) {
     super(props, context)
-    console.log('Wheel : constructor')
+    console.log('Wheel : constructor', props)
   }
 
    componentDidMount(){

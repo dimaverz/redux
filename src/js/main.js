@@ -19,6 +19,11 @@ import * as page from './containers'
 
 import DevTools from './containers/DevTools';
 
+import Dashboard from './containers/Dashboard';
+import Branch from './containers/Branch';
+
+//import './app.css'
+
 const store = configureStore()
 const history = browserHistory;//createHistory()
 
@@ -33,15 +38,23 @@ let obj = {
       }
 }
 
-axios.post('http://localhost/canabi/', obj)
-      .then(function (response) {
+axios({
+  method: 'post',
+  url: 'http://localhost/canabi/wwapi',
+  data: obj,
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8'
+  }
+}).then(function (response) {
         console.log('good : ', response)
         render(
           <Provider store={store}>
             <div>
               <Router history={history}>
-                <Route path="/" component={page.App} />
-                <Route path="/w" component={page.cWheel} />
+               <Route path="/" component={page.App} >
+                  <IndexRoute component={Dashboard} />
+                  <Route path="branch" component={Branch} />
+               </Route>
               </Router>
               <DevTools />
             </div>
@@ -52,4 +65,24 @@ axios.post('http://localhost/canabi/', obj)
       .catch(function (response) {
         console.log('error : ', response)
       })
+
+// axios.post('http://localhost/canabi/', obj)
+//       .then(function (response) {
+//         console.log('good : ', response)
+//         render(
+//           <Provider store={store}>
+//             <div>
+//               <Router history={history}>
+//                 <Route path="/" component={page.App} />
+//                 <Route path="/w" component={page.cWheel} />
+//               </Router>
+//               <DevTools />
+//             </div>
+//           </Provider>,
+//           document.getElementById('root')
+//         )
+//       })
+//       .catch(function (response) {
+//         console.log('error : ', response)
+//       })
 /**/

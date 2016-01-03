@@ -15,7 +15,7 @@ export default class Template extends React.Component {
        //router.transitionTo('/page');
        console.log('click', path);
        //history.pushState(null, '/page')
-       this.props.history.replaceState(null, path);
+       //this.props.history.replaceState(null, path);
      }
      render(){
         console.log('click', this.props.location);
