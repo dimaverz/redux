@@ -5,6 +5,15 @@ class Dashboard extends Component {
     super(props, context)
   }
 
+  componentWillUnmount() {
+    //console.log('Dashboard :: componentWillUnmount');
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    //console.log('should you : ', this.props, nextProps);
+    return true;
+  }
+
   render() {
 
     return (

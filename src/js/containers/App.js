@@ -19,6 +19,10 @@ class App extends Component {
       console.log('App : componentDidMount', this.props);
    }
 
+   componentWillReceiveProps(nextProps){
+     console.log('App new props : ', this.props, nextProps);
+   }
+
   render() {
     console.log('APP - render : ', this.state, this.props);
 
@@ -29,7 +33,7 @@ class App extends Component {
          <Link to="/">go home</Link>
          <ReactCSSTransitionGroup
            component="div"
-           transitionName="example"
+           transitionName="swap2"
            transitionEnterTimeout={500}
            transitionLeaveTimeout={500}
          >
@@ -43,6 +47,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('App(mapStateToProps) : ', state);
   return {}
 }
 
